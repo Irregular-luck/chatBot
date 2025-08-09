@@ -55,7 +55,7 @@ AI replies to ur messages in a funny way
 
 
 ## Team Contributions
-- [Adithyan N]: [Idea,Styling]
+- [Adithyan N]: [Idea ,Styling]
 - [Muhammed Nidal N]: [Javascript Logic,Api]
 
 ---
