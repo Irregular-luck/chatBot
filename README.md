@@ -56,6 +56,9 @@ All you need is a modern web browser (like Chrome, Firefox, or Edge).
 2.  Type anything you want into the input box at the bottom.
 3.  Click the **"Roast Me! ✨"** button or press `Enter`.
 4.  Wait for Chetan to "think" and enjoy your roast!
+5.  We also added **"AI Roast "** and some voice features check it out.
+
+
 
 ## How to Add More Roasts ✍️
 
