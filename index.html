@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Chetan - Malayalam Roast Bot</title>
-    <!-- Importing a fun, handwritten font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Bungee&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base styles for the body */
         body {
             font-family: 'Manjari', sans-serif;
             margin: 0;
@@ -18,12 +18,12 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f7e0a3; /* A warm, yellowish background */
+            background-color: #f7e0a3;
             color: #333;
             overflow-x: hidden;
+            background-image: radial-gradient(#bdb3a0 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-
-        /* Main Chatbot Container */
         .chatbot-container {
             width: 90%;
             max-width: 650px;
@@ -34,11 +34,12 @@
             flex-direction: column;
             overflow: hidden;
             border: 5px solid #ff6f61;
-        }
-
-        /* Chetan's Header Section */
+            background-color: #f7f3e9;
+            background-image: radial-gradient(#ff6f61 1px, transparent 1px);
+            background-size: 20px 20px;
+        }  
         .chetan-header {
-            background-color: #ffd66b; /* Cheerful yellow */
+            background-color: #ffd66b;
             padding: 20px;
             text-align: center;
             border-bottom: 3px dashed #ff6f61;
@@ -58,8 +59,6 @@
             font-weight: 700;
             color: #555;
         }
-
-        /* Chat Window Styling */
         .chat-window {
             height: 450px;
             overflow-y: auto;
@@ -68,8 +67,6 @@
             flex-direction: column;
             gap: 15px;
         }
-
-        /* Individual message styling with hand-drawn bubbles */
         .message-container {
             display: flex;
             width: 100%;
@@ -90,33 +87,18 @@
             word-wrap: break-word;
             line-height: 1.4;
             position: relative;
-            box-shadow: 3px 3px 0 #333; /* Hand-drawn shadow effect */
+            box-shadow: 3px 3px 0 #333;
             border: 2px solid #333;
-        }
-        
-        .message-box.loading::after {
-            content: '• • •';
-            display: block;
-            text-align: center;
-            font-size: 2em;
-            line-height: 0.5em;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
         }
 
         .user-message-box {
-            background-color: #6a82fb; /* User message color */
+            background-color: #6a82fb; 
             color: #fff;
             border-bottom-right-radius: 5px;
         }
 
         .bot-message-box {
-            background-color: #ffd66b; /* Bot message color */
+            background-color: #ffd66b;
             color: #333;
             border-bottom-left-radius: 5px;
         }
@@ -136,8 +118,6 @@
             margin-top: 8px;
             text-align: right;
         }
-
-        /* Input area styling */
         .chat-input-area {
             display: flex;
             padding: 20px;
@@ -173,8 +153,6 @@
         #send-button:hover {
             background-color: #e55a5a;
         }
-
-        /* Responsive design for smaller screens */
         @media (max-width: 600px) {
             .chetan-header h1 {
                 font-size: 2.2em;
@@ -190,18 +168,46 @@
                 margin-left: 0;
             }
         }
+        /* New CSS for the wave loading animation */
+        .loading-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #d45942;
+            font-size: 2rem;
+            height: 3rem;
+        }
+
+        .loading-dots i {
+            animation: bounce 1.2s infinite ease-in-out;
+            transform-origin: center bottom;
+        }
+        .loading-dots i:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .loading-dots i:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
-    
-    <!-- Main Chatbot Container -->
     <div class="chatbot-container">
         <header class="chetan-header">
             <h1>Chatbot Chetan</h1>
             <p>നിങ്ങളുടെ സ്വന്തം റോസ്റ്റ് ബോട്ട്!</p>
         </header>
         <div class="chat-window" id="chat-window">
-            <!-- Bot's initial message -->
             <div class="message-container bot-message-container">
                 <div class="message-box bot-message-box">
                     <p>എന്തെങ്കിലും ഒന്ന് പറ, ഞാൻ റോസ്റ്റ് ചെയ്ത് തരാം!</p>
@@ -219,10 +225,8 @@
             const userInput = document.getElementById('user-input');
             const sendButton = document.getElementById('send-button');
             const chatWindow = document.getElementById('chat-window');
-
-            // --- Malayalam Movie Dialogues for Roasting (with Images) ---
             const roasts = [
-                { dialogue: "ഇൻഫോ ആയിട്ടുണ്ട്, താങ്ക്യൂ.", movie: "Sandesham", image: "https://i.pinimg.com/1200x/08/04/46/08044663e81278ad1756b7c233b6cea0.jpg" },
+                { dialogue: "ഇൻഫോ ആയിട്ടുണ്ട്, താങ്ക്യൂ.", movie: "Sandesham", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7F9kL4cVgvNP1_-PDdysiQXTrnfypcsRtRr9-ZGw5zaB6nc2igE0kU9rob2ogwdcAZiE&usqp=CAU" },
                 { dialogue: "എന്തൊക്കെ ബഹളമായിരുന്നു... മേൽശാന്തി, കീഴ്ശാന്തി, പോമ പോമ...", movie: "Kilukkam", image: "https://i.pinimg.com/736x/17/3e/65/173e65b5d55f40214d11f4024078c446.jpg" },
                 { dialogue: "അങ്ങനെ പവനായി ശവമായി.", movie: "Nadodikkattu", image: "https://imgs.search.brave.com/UOIhHMWKUWR-cQI9unuU2pBcdMcGS_UvW3mVvZnXAek/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5hc3NldHR5cGUu/Y29tL3RubS9pbXBv/cnQvc2l0ZXMvZGVm/YXVsdC9maWxlcy9O/YWRvZGlrYXR0dV8x/MjAwLTgwMF8xLmpw/Zz93PTQ4MCZhdXRv/PWZvcm1hdCxjb21w/cmVzcyZmaXQ9bWF4" },
                 { dialogue: "ഒരു മന്ത്രവാദിയുടെ ചിത്രം... ഇതിനേക്കാളും നല്ലത് ഞാൻ വരക്കുമല്ലോ.", movie: "Yodha", image: "https://c.saavncdn.com/902/Yodha-Malayalam-1992-20211117200858-500x500.jpg" },
@@ -237,8 +241,6 @@
                 { dialogue:  "നമ്മൾ അനാഥരാണ് പക്ഷെ ഗുണ്ടകൾ അല്ല", movie: "Kummatikali", image:"https://i.ytimg.com/vi/GAi_oN4izUk/maxresdefault.jpg" }
                  ,{ dialogue:  "തമ്പുരാട്ടിയുടെ കൂടെ റോയല്‍ ഡിന്നറിന് പോയപ്പോ നീ എന്താടാ പറഞ്ഞത്? ‘ഡു നോട്ട് മിസണ്ടര്‍സ്റ്റാന്‍ഡ് മീ’ അല്ലേ? ഞാന്‍ മിസണ്ടര്‍സ്റ്റാന്‍ ആവുമട ", movie: "Kakkakuyil", image:"https://pbs.twimg.com/media/EQQAdmOU4AAYWEz.jpg" }
             ];
-
-            // Function to add a new message to the chat window
             function addMessage(text, sender, imageUrl = null, movieTitle = null) {
                 const messageContainer = document.createElement('div');
                 messageContainer.classList.add('message-container', sender === 'user' ? 'user-message-container' : 'bot-message-container');
@@ -278,7 +280,6 @@
                 return messageBox;
             }
 
-            // Function to handle the chat interaction
             function handleUserMessage() {
                 const userText = userInput.value.trim();
 
@@ -287,30 +288,29 @@
                     userInput.value = '';
                     sendButton.disabled = true;
 
-                    // Show loading indicator
-                    const loadingMessage = addMessage('', 'bot');
-                    loadingMessage.classList.add('loading');
+                    // Create the new loading animation container
+                    const loadingContainer = document.createElement('div');
+                    loadingContainer.classList.add('message-container', 'bot-message-container');
+                    const loadingDots = document.createElement('div');
+                    loadingDots.classList.add('loading-dots');
+                    loadingDots.innerHTML = '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i>';
+                    loadingContainer.appendChild(loadingDots);
+                    chatWindow.appendChild(loadingContainer);
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
                     
-                    // Simulate bot "thinking"
                     setTimeout(() => {
-                        loadingMessage.parentElement.remove();
+                        loadingContainer.remove();
 
-                        // Get a random roast from the predefined list
                         const randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
                         
-                        // Display the roast with dialogue, image, and movie title
                         addMessage(randomRoast.dialogue, 'bot', randomRoast.image, randomRoast.movie);
 
                         sendButton.disabled = false;
                         userInput.focus();
-                    }, 1500); // 1.5 second delay
+                    }, 1500);
                 }
             }
-
-            // Event listener for the send button
             sendButton.addEventListener('click', handleUserMessage);
-
-            // Event listener for the Enter key
             userInput.addEventListener('keypress', (event) => {
                 if (event.key === 'Enter') {
                     handleUserMessage();
