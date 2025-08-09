@@ -34,9 +34,9 @@ For Software:
 For Software:Used PopOs and Win11
 # Installation
 
-1.git clone https://github.com/Irregular-luck/chatBot.git
-2.cd chatBot
-3.Run Index.html 
+1.git clone https://github.com/Irregular-luck/chatBot.git<br>
+2.cd chatBot<br>
+3.Run Index.html<br> 
 
 
 # Screenshots (Add at least 3)
