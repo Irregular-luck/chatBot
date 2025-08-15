@@ -43,7 +43,7 @@ For Software:Used PopOs and Win11
 ![Home](photos/Home.png)
 HomePage of ChatBot
 
-![Roast](photos/roastme.png)
+![Roast](photos/RoastMe.png)
 Classic Roast with Static pic and dialogues
 
 ![Ai](photos/airoast.png)
