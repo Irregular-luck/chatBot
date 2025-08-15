@@ -46,7 +46,7 @@ HomePage of ChatBot
 ![Roast](photos/RoastMe.png)
 Classic Roast with Static pic and dialogues
 
-![Ai](photos/AiRoast.png)
+![Ai](photos/airoast.png)
 AI replies to ur messages in a funny way
 
 ### Project Demo
