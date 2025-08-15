@@ -40,13 +40,13 @@ For Software:Used PopOs and Win11
 
 
 # Screenshots (Add at least 3)
-![Home](photos/home.png)
+![Home](photos/Home.png)
 HomePage of ChatBot
 
-![Roast](photos/roastme.png)
+![Roast](photos/RoastMe.png)
 Classic Roast with Static pic and dialogues
 
-![Ai](photos/airoast.png)
+![Ai](photos/AiRoast.png)
 AI replies to ur messages in a funny way
 
 ### Project Demo
